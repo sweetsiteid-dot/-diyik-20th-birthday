@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 20th Birthday Diyik 💙</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= RESET & BASE STYLES ================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #08121e; /* Theme Dark Blue */
+            color: #f0f6fc;
+            overflow-x: hidden;
+        }
+
+        #websiteContent {
+            display: none;
+        }
+
+        /* ================= PASSWORD SCREEN ================= */
+        #passwordScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url("diyik1.jpg") no-repeat center center/cover;
+        }
+
+        .password-overlay {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(5, 15, 30, 0.75);
+            backdrop-filter: blur(10px);
+        }
+
+        .password-box {
+            width: 90%;
+            max-width: 380px;
+            padding: 40px;
+            background: rgba(16, 37, 66, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(100, 180, 255, 0.25);
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 0 40px rgba(0, 120, 255, 0.15);
+        }
+
+        .password-box h1 {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        .password-box h2 {
+            margin-bottom: 15px;
+            color: #90caf9;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .password-box p {
+            color: #d0e1f9;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .password-box input {
+            width: 100%;
+            padding: 14px;
+            margin-top: 20px;
+            border: 1px solid rgba(144, 202, 249, 0.3);
+            outline: none;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            text-align: center;
+            font-size: 16px;
+            letter-spacing: 2px;
+        }
+
+        .password-box button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #42a5f5, #1e88e5);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .3s;
+            box-shadow: 0 4px 15px rgba(30, 136, 229, 0.4);
+        }
+
+        .password-box button:hover {
+            transform: scale(1.03);
+            background: linear-gradient(135deg, #64b5f6, #2196f3);
+        }
+
+        .hint {
+            margin-top: 15px;
+            font-size: 13px;
+            opacity: .7;
+            color: #90caf9;
+        }
+
+        /* ================= HERO SECTION ================= */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 60px;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #e3f2fd, #90caf9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h2 {
+            font-size: 38px;
+            margin-bottom: 25px;
+            color: #64b5f6;
+        }
+
+        .hero p {
+            line-height: 2;
+            color: #c2e0ff;
+            margin-bottom: 30px;
+        }
+
+        .hero button {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #2196f3, #1565c0);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .3s;
+            box-shadow: 0 5px 20px rgba(33, 150, 243, 0.4);
+        }
+
+        .hero button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(33, 150, 243, 0.6);
+        }
+
+        /* ================= SECTIONS ================= */
+        .section {
+            padding: 90px 20px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 50px;
+            font-family: 'Playfair Display', serif;
+            color: #90caf9;
+        }
+
+        /* ================= GLASS CARD ================= */
+        .glass-card {
+            max-width: 800px;
+            margin: auto;
+            padding: 40px;
+            border-radius: 25px;
+            background: rgba(16, 37, 66, 0.35);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(100, 180, 255, 0.15);
+            line-height: 2;
+            color: #d0e1f9;
+        }
+
+        /* ================= VIRTUAL BIRTHDAY CAKE & ROSES ================= */
+        .cake-container {
+            margin: 30px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .cake {
+            position: relative;
+            width: 150px;
+            height: 100px;
+            background: #1976d2;
+            border-radius: 10px 10px 0 0;
+            box-shadow: inset 0 12px 0 #64b5f6, inset 0 24px 0 #1565c0;
+        }
+
+        .cake::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 160px;
+            height: 20px;
+            background: #e3f2fd;
+            border-radius: 10px;
+        }
+
+        .candle {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 30px;
+            background: #ffb74d;
+            border-radius: 3px;
+        }
+
+        .flame {
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 14px;
+            height: 18px;
+            background: #ff9800;
+            border-radius: 50% 50% 20% 20%;
+            box-shadow: 0 0 15px #ff9800;
+            animation: flicker 0.8s infinite alternate;
+        }
+
+        .flame.off {
+            display: none;
+        }
+
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scale(1); }
+            100% { transform: translateX(-50%) scale(1.15); }
+        }
+
+        .cake-instruction {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #90caf9;
+            font-style: italic;
+        }
+
+        .roses-card {
+            background: rgba(183, 28, 28, 0.15);
+            border: 1px solid rgba(239, 83, 80, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 600px;
+            margin: 40px auto 0;
+            text-align: center;
+        }
+
+        .roses-card h3 {
+            color: #ef5350;
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        /* ================= POLAROID GALLERY ================= */
+        .polaroid-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .polaroid {
+            width: 260px;
+            background: #ffffff;
+            padding: 12px 12px 25px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            transform: rotate(-2deg);
+            transition: .4s;
+        }
+
+        .polaroid:nth-child(even) {
+            transform: rotate(2deg);
+        }
+
+        .polaroid:hover {
+            transform: scale(1.06) rotate(0deg);
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .polaroid span {
+            display: block;
+            margin-top: 12px;
+            color: #1a237e;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* ================= REASON CARDS ================= */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .reason-card {
+            padding: 30px;
+            border-radius: 20px;
+            background: rgba(16, 37, 66, 0.4);
+            border: 1px solid rgba(100, 180, 255, 0.15);
+            transition: .3s;
+        }
+
+        .reason-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(144, 202, 249, 0.4);
+        }
+
+        .reason-card h3 {
+            margin: 15px 0;
+            color: #64b5f6;
+        }
+
+        .reason-card p {
+            color: #c2e0ff;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* ================= LETTER BOX ================= */
+        .letter-box {
+            max-width: 850px;
+            margin: auto;
+            padding: 45px;
+            border-radius: 25px;
+            background: rgba(16, 37, 66, 0.45);
+            border: 1px solid rgba(100, 180, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .letter-box p {
+            text-align: left;
+            line-height: 2;
+            color: #e3f2fd;
+            font-size: 15px;
+            white-space: pre-line;
+        }
+
+        /* ================= FINAL SECTION ================= */
+        .final-section {
+            padding: 120px 20px;
+            text-align: center;
+        }
+
+        .final-section h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+            color: #90caf9;
+        }
+
+        .final-section h1 {
+            font-size: 65px;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 25px;
+            color: #64b5f6;
+        }
+
+        .final-section p {
+            max-width: 700px;
+            margin: auto;
+            line-height: 2;
+            color: #c2e0ff;
+        }
+
+        /* ================= ENDING ================= */
+        .ending {
+            padding: 100px 20px;
+            text-align: center;
+            background: #040a12;
+            border-top: 1px solid rgba(100, 180, 255, 0.1);
+        }
+
+        .ending h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+            color: #90caf9;
+        }
+
+        .ending p {
+            margin-top: 8px;
+            color: #90a4ae;
+        }
+
+        /* ================= FLOATING HEARTS ================= */
+        #hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* ================= RESPONSIVE MOBILE ================= */
+        @media(max-width: 768px) {
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero h2 {
+                font-size: 28px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .final-section h1 {
+                font-size: 45px;
+            }
+
+            .polaroid {
+                width: 90%;
+                max-width: 300px;
+            }
+
+            .letter-box {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- AUDIO PLAYER -->
+    <audio id="music" loop>
+        <source src="kekal-nadin-amizah.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- FLOATING HEARTS CONTAINER -->
+    <div id="hearts"></div>
+
+    <!-- ================= PASSWORD SCREEN ================= -->
+    <div id="passwordScreen">
+        <div class="password-overlay">
+            <div class="password-box">
+                <h1>💙</h1>
+                <h2>A Little Surprise</h2>
+                <p>Happy 20th Birthday, Diyik.<br>A special gift is waiting for you.</p>
+                <input type="password" id="passwordInput" placeholder="Enter Secret Code">
+                <button onclick="checkPassword()">Unlock 💙</button>
+                <p class="hint">Secret PIN: 1010</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= WEBSITE CONTENT ================= -->
+    <div id="websiteContent">
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Happy 20th Birthday</h1>
+                <h2>Diyik 💙</h2>
+                <p>
+                    Today isn't just another day.<br>
+                    It's the celebration of 20 beautiful years of your journey and God's faithfulness in your life.
+                </p>
+                <button onclick="openGift()">Begin The Journey ✨</button>
+            </div>
+        </section>
+
+        <!-- SPECIAL DAY & VIRTUAL CAKE -->
+        <section id="giftSection" class="section">
+            <div class="glass-card">
+                <h2>A Special Celebration 🎂</h2>
+                <p>
+                    20 years ago, the world welcomed someone truly special. Today, we celebrate every step you've taken, every challenge you've overcome, and the wonderful man you continue to become.
+                </p>
+
+                <!-- Interactive Birthday Cake -->
+                <div class="cake-container" onclick="blowCandle()">
+                    <div class="cake">
+                        <div class="candle">
+                            <div class="flame" id="flame"></div>
+                        </div>
+                    </div>
+                    <p class="cake-instruction" id="cakeText">Click the candle to blow out your birthday wish! 🕯️</p>
+                </div>
+            </div>
+
+            <!-- Red Roses Card -->
+            <div class="roses-card">
+                <h3>🌹 Virtual Red Roses For You</h3>
+                <p style="color: #ffcdd2; font-size: 14px; line-height: 1.8;">
+                    "A bouquet of red roses to remind you how deeply loved, valued, and appreciated you are today and every day."
+                </p>
+            </div>
+        </section>
+
+        <!-- POLAROID GALLERY (8 Photos) -->
+        <section class="section">
+            <h2 class="section-title">Favorite Memories With You 📸</h2>
+            <div class="polaroid-container">
+                <div class="polaroid">
+                    <img src="diyik1.jpg" alt="Memory 1">
+                    <span>Watching you grow 💙</span>
+                </div>
+                <div class="polaroid">
+                    <img src="diyik2.jpg" alt="Memory 2">
+                    <span>My favorite smile ✨</span>
+                </div>
+                <div class="polaroid">
+                    <img src="diyik3.jpg" alt="Memory 3">
+                    <span>Answered prayers 🌙</span>
+                </div>
+                <div class="polaroid">
+                    <img src="diyik4.jpg" alt="Memory 4">
+                    <span>Precious moment 🤍</span>
+                </div>
+                <div class="polaroid">
+                    <img src="diyik5.jpg" alt="Memory 5">
+                    <span>Pure happiness 🌸</span>
+                </div>
+                <div class="polaroid">
+                    <img src="diyik6.jpg" alt="Memory 6">
+                    <span>Always grateful 💙</span>
+                </div>
+                <div class="polaroid">
+                    <img src="diyik7.jpg" alt="Memory 7">
+                    <span>Growing together ✨</span>
+                </div>
+                <div class="polaroid">
+                    <img src="diyik8.jpg" alt="Memory 8">
+                    <span>My favorite person 💙</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SPECIAL THINGS -->
+        <section class="section">
+            <h2 class="section-title">Things That Make You Special ✨</h2>
+            <div class="cards">
+                <div class="reason-card">
+                    💙
+                    <h3>Your Faithfulness</h3>
+                    <p>How faithfully you carry your responsibilities every single day.</p>
+                </div>
+                <div class="reason-card">
+                    💙
+                    <h3>Your Heart</h3>
+                    <p>How deeply you love your family and intentionally care for people around you.</p>
+                </div>
+                <div class="reason-card">
+                    💙
+                    <h3>Your Quiet Strength</h3>
+                    <p>Your willingness to keep showing up and giving your best, even on hard days.</p>
+                </div>
+                <div class="reason-card">
+                    💙
+                    <h3>Your Growth</h3>
+                    <p>Watching God shape your heart has been one of my greatest gifts.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- LETTER SECTION -->
+        <section class="section">
+            <h2 class="section-title">💌 A Letter For Diyik</h2>
+            <div class="letter-box">
+                <p>Happy 20th Birthday! Today, I celebrate the man you are, and even more, the man God continues to shape you into. 
+
+If there's one thing I hope you never question, it's this:
+You are doing so much better than you give yourself credit for.
+I see how faithfully you carry your responsibilities, how deeply you love your family, and how intentionally you care for the people around you.
+I hope that you know that none of those things go unnoticed.
+
+I'm proud of how much you've grown. I've had the privilege of watching God work in your life through every season and seeing Him shape your heart has been one of the greatest gifts of loving you. One of my greatest joys is watching the Lord use your life. Through your quiet sacrifices and your willingness to keep showing up even on the hard days, you have become a blessing not only to me, but to everyone fortunate enough to know you.
+
+As you begin your twentieth year, my prayer is that you would keep walking closely with the Lord. May He give you wisdom when you need direction, strength when life feels heavy, and a joy that remains steady because it is found in Him. May your life always reflect His goodness.
+
+It's been one year of celebrating your birthday together. One year of answered prayers, growth, laughter, forgiveness, and choosing each other again and again. And through it all, God has been faithful in every season of our story. I still find myself in awe of how He brought us together and even more grateful that He continues to lead us forward.
+
+I look forward to all the years God still has ahead for us. To growing with you, loving you more deeply, and learning you more fully with every season we walk through. To choosing you — again and again — as we continue building a life centered on Him.
+
+For as long as I’m here, you’ll never have to wonder if you deserve the same love and effort you give to others. I’ll make sure you always feel it. May God always bless you and may good things always be around you. 
+
+I love you so much, and I hope that in all the years we have ahead of us, you never have to question how deeply you are loved.
+
+HAPPY BIRTHDAY, LOVE. I CAN'T WAIT TO SPEND THE REST OF MY LIFE CELEBRATING YOURS. ♥</p>
+            </div>
+        </section>
+
+        <!-- FINAL SECTION -->
+        <section class="final-section">
+            <h2>Happy 20th Birthday</h2>
+            <h1>Diyik 💙</h1>
+            <p>
+                May God always bless you.<br>
+                May good things always surround you.<br>
+                And may you always know how deeply loved you are.
+            </p>
+        </section>
+
+        <!-- ENDING -->
+        <section class="ending">
+            <h2>Made With Love 💙</h2>
+            <p>From Ceiya, For Diyik</p>
+            <p>2026</p>
+        </section>
+
+    </div>
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script>
+        /* PASSWORD CHECK */
+        function checkPassword() {
+            const password = document.getElementById("passwordInput").value;
+            if (password === "1010") {
+                document.getElementById("passwordScreen").style.display = "none";
+                document.getElementById("websiteContent").style.display = "block";
+            } else {
+                alert("Wrong PIN 💙 Hint: 1010");
+            }
+        }
+
+        /* OPEN GIFT & PLAY MUSIC */
+        function openGift() {
+            const music = document.getElementById("music");
+            music.play().catch(e => console.log("Audio play blocked by browser"));
+
+            document.getElementById("giftSection").scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+
+        /* BLOW CANDLE ACTION */
+        function blowCandle() {
+            const flame = document.getElementById("flame");
+            const cakeText = document.getElementById("cakeText");
+            if (!flame.classList.contains("off")) {
+                flame.classList.add("off");
+                cakeText.innerText = "Wish made! May all your prayers come true ✨💙";
+            }
+        }
+
+        /* FLOATING HEARTS */
+        function createHeart() {
+            const heart = document.createElement("div");
+            const icons = ["💙", "✨", "🌸", "🤍"];
+            heart.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+            heart.style.position = "absolute";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.top = "-30px";
+            heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+            heart.style.opacity = Math.random();
+            heart.style.animation = `fall ${Math.random() * 4 + 6}s linear`;
+
+            document.getElementById("hearts").appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 10000);
+        }
+
+        setInterval(createHeart, 400);
+
+        /* ANIMATION STYLES INJECTION */
+        const style = document.createElement("style");
+        style.innerHTML = `
+            @keyframes fall {
+                0% { transform: translateY(0); opacity: 1; }
+                100% { transform: translateY(110vh); opacity: 0; }
+            }
+            .fade-in {
+                opacity: 0;
+                transform: translateY(40px);
+                transition: all 1s ease;
+            }
+            .fade-in.show {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        `;
+        document.head.appendChild(style);
+
+        /* SCROLL ANIMATION OBSERVER */
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                }
+            });
+        }, {
+            threshold: 0.15
+        });
+
+        document.querySelectorAll(".section, .polaroid, .reason-card, .final-section, .ending").forEach(el => {
+            el.classList.add("fade-in");
+            observer.observe(el);
+        });
+
+        /* POLAROID EFFECT */
+        const polaroids = document.querySelectorAll(".polaroid");
+        polaroids.forEach(card => {
+            card.addEventListener("mouseenter", () => {
+                card.style.transform = "scale(1.08) rotate(0deg)";
+            });
+            card.addEventListener("mouseleave", () => {
+                card.style.transform = "";
+            });
+        });
+
+        /* RANDOM FLOATING QUOTES */
+        const quotes = [
+            "Twenty looks beautiful on you 💙",
+            "May every prayer find its way to you ✨",
+            "Watching God work in your life is a blessing 🌙",
+            "You are doing better than you give yourself credit for 💙",
+            "The best chapters are still ahead 📖",
+            "You are loved more than you know 💙"
+        ];
+
+        const quoteElement = document.createElement("div");
+        quoteElement.className = "floating-quote";
+        quoteElement.innerText = quotes[0];
+        document.body.appendChild(quoteElement);
+
+        let currentQuote = 0;
+        setInterval(() => {
+            currentQuote = (currentQuote + 1) % quotes.length;
+            quoteElement.style.opacity = 0;
+            setTimeout(() => {
+                quoteElement.innerText = quotes[currentQuote];
+                quoteElement.style.opacity = 1;
+            }, 500);
+        }, 5000);
+
+        /* QUOTE STYLING */
+        const quoteStyle = document.createElement("style");
+        quoteStyle.innerHTML = `
+            .floating-quote {
+                position: fixed;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(16, 37, 66, 0.7);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(100, 180, 255, 0.2);
+                padding: 10px 22px;
+                border-radius: 50px;
+                font-size: 13px;
+                color: #e3f2fd;
+                z-index: 999;
+                transition: .5s;
+                text-align: center;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            }
+        `;
+        document.head.appendChild(quoteStyle);
+    </script>
+</body>
+
+</html>
